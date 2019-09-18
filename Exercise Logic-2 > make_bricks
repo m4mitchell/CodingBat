@@ -1,0 +1,24 @@
+# Exercise Logic-2 > make_bricks
+# We want to make a row of bricks that is goal inches long. We have a number of small bricks (1 inch each) 
+# and big bricks (5 inches each). Return True if it is possible to make the goal by choosing from the given bricks. 
+
+
+def make_bricks(small, big, goal):
+little_blocks = goal % 5
+  
+# if we don't have enough little blocks
+if small < little_blocks:
+  return False
+# if we don't have enough blocks in total
+if (small + big * 5) < goal:
+  return False
+ 
+# if we have enough small or big blocks:
+if (small or (big * 5)) / goal >= 1:
+  return True
+# if we have exactly the right number of blocks
+if (small + big * 5) == goal:
+  return True
+# if just small or big blocks are enough
+if small or (big * 5) == goal:
+  return True
